@@ -2,15 +2,40 @@
 Settings
 ========
 
+The cookie settings (name, max-age, domain...) follow the same principles like
+Django's built-in session cookie. For more details, please check that documenation
+for more details about the meaning.
+
 ``COOKIE_CONSENT_NAME``
   name of consent cookie that remembers user choice
 
   Default: ``cookie_consent``.
 
 ``COOKIE_CONSENT_MAX_AGE``
-  max-age of consent cookie
+  max-age of consent cookie, in seconds
 
   Default: 1 year
+
+``COOKIE_CONSENT_DOMAIN``
+  Domain to restrict the cookie to.
+
+  Default: ``None``
+
+``COOKIE_CONSENT_SECURE``
+  Whether to only set the cookie in an HTTPS context.
+
+  Default: ``False``
+
+``COOKIE_CONSENT_HTTPONLY``
+  Whether access from Javascript is blocked.
+
+  Default: ``True``
+
+``COOKIE_CONSENT_SAMESITE``
+  The SameSite policy. Possible values are ``"Strict"``, ``"Lax"``, ``"None"`` or
+  ``False`` to disable setting the flag.
+
+  Default: ``"Lax"``
 
 ``COOKIE_CONSENT_DECLINE``
   decline value
@@ -26,9 +51,9 @@ Settings
   Default: ``True``
 
 ``COOKIE_CONSENT_OPT_OUT``
-  Boolean value represents if cookies are opt-in or opt-out
-  opt-out cookies are set until declined
-  opt-in cookies are set only if accepted
+  Boolean value represents if cookies are opt-in or opt-out.
+  Opt-out cookies are set until declined.
+  Opt-in cookies are set only if accepted.
 
   Default: ``False``
 

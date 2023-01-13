@@ -1,21 +1,21 @@
 # -*- coding: utf-8 -*-
 from django import template
+
 try:
     from django.urls import reverse
 except ImportError:
     from django.core.urlresolvers import reverse
 
+from cookie_consent.conf import settings
 from cookie_consent.util import (
+    are_all_cookies_accepted,
     get_accepted_cookies,
+    get_cookie_dict_from_request,
     get_cookie_string,
     get_cookie_value_from_request,
-    get_cookie_dict_from_request,
-    are_all_cookies_accepted,
     get_not_accepted_or_declined_cookie_groups,
     is_cookie_consent_enabled,
 )
-from cookie_consent.conf import settings
-
 
 register = template.Library()
 
@@ -141,7 +141,9 @@ def accepted_cookies(request):
     """
     Filter returns accepted cookies varnames.
 
-    ::
+    .. code-block:: django
+
         {{ request|accepted_cookies }}
+
     """
     return [c.varname for c in get_accepted_cookies(request)]
